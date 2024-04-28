@@ -1,8 +1,8 @@
 'use client'
 
 import { Suspense, useEffect, useState } from "react";
-import { getAllGames, getById } from "../lib/fetching";
-import { usePathname, useSearchParams } from "next/navigation";
+import { getById } from "../lib/fetching";
+import { useSearchParams } from "next/navigation";
 import { Game } from "@/interface/Game";
 
 function ViewGame() {
@@ -25,9 +25,9 @@ function ViewGame() {
 }
 
 function Page() {
-  <Suspense>
+  return (<Suspense fallback="">
     <ViewGame />
-  </Suspense>
+  </Suspense>)
 }
 
 export default Page;

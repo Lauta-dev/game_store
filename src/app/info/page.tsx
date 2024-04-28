@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getAllGames, getById } from "../lib/fetching";
-import {  usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { Game } from "@/interface/Game";
 
 function Page() {
@@ -18,10 +18,13 @@ function Page() {
 
 
   return (
-    <div>
-      {JSON.stringify(game)}
-      <p>Game selected {getParam}</p>
-    </div>
+    <Suspense>
+      <div>
+        {JSON.stringify(game)}
+        <p>Game selected {getParam}</p>
+      </div>
+    </Suspense>
+
   )
 }
 

@@ -5,7 +5,7 @@ import { getAllGames, getById } from "../lib/fetching";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Game } from "@/interface/Game";
 
-function Page() {
+function ViewGame() {
   const getParam = useSearchParams().get("game") ?? "1"
   const [game, setGame] = useState<Game>()
 
@@ -16,16 +16,18 @@ function Page() {
     fetching()
   }, [])
 
-
   return (
-    <Suspense>
-      <div>
-        {JSON.stringify(game)}
-        <p>Game selected {getParam}</p>
-      </div>
-    </Suspense>
-
+    <div>
+      {JSON.stringify(game)}
+      <p>Game selected {getParam}</p>
+    </div>
   )
+}
+
+function Page() {
+  <Suspense>
+    <ViewGame />
+  </Suspense>
 }
 
 export default Page;
